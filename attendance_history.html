@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance History - MediCare Hospital</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f6f0e4;
+            color: #2b2020;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: #f6f0e4;
+            border-bottom: 1px solid #ddd2c2;
+        }
+
+        nav h2 {
+            color: #8b1234;
+            font-size: 27px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #332b2b;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #8b1234;
+        }
+
+        .logout {
+            background: #8b1234;
+            color: white !important;
+            padding: 11px 22px;
+            border-radius: 25px;
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 25px;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading small {
+            color: #8b1234;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .heading h1 {
+            font-size: 42px;
+            margin-top: 12px;
+        }
+
+        .heading p {
+            margin-top: 10px;
+            color: #625959;
+        }
+
+        /* TABLE */
+
+        .table-box {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #8b1234;
+            color: white;
+            padding: 16px;
+            text-align: center;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: #faf6ee;
+        }
+
+        .present {
+            color: #267326;
+            font-weight: bold;
+        }
+
+        .absent {
+            color: #8b1234;
+            font-weight: bold;
+        }
+
+        /* NO RECORDS */
+
+        #noRecords {
+            display: none;
+            background: white;
+            padding: 35px;
+            text-align: center;
+            border-radius: 15px;
+            color: #625959;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li:nth-child(2),
+            nav ul li:nth-child(3) {
+                display: none;
+            }
+
+            .container {
+                margin-top: 35px;
+            }
+
+            .heading h1 {
+                font-size: 32px;
+            }
+
+            .table-box {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 700px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <h2>MediCare</h2>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="attendance.html">Attendance</a>
+            </li>
+
+            <li>
+                <a href="attendance_history.html">History</a>
+            </li>
+
+            <li>
+                <a href="#" class="logout" onclick="logoutUser()">Logout</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="container">
+
+        <div class="heading">
+
+            <small>STAFF RECORDS</small>
+
+            <h1>Attendance History</h1>
+
+            <p>
+                View previously recorded hospital staff attendance.
+            </p>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-box" id="tableBox">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="attendanceTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- EMPTY MESSAGE -->
+
+        <div id="noRecords">
+
+            <h3>No attendance records found</h3>
+
+            <p style="margin-top:10px;">
+                Mark attendance first and then return to this page.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /*
+         * LOAD ATTENDANCE RECORDS
+         *
+         * This checks the browser's localStorage for
+         * attendance information saved by the attendance page.
+         */
+
+        function loadAttendanceHistory() {
+
+            const tableBody =
+                document.getElementById("attendanceTableBody");
+
+            const tableBox =
+                document.getElementById("tableBox");
+
+            const noRecords =
+                document.getElementById("noRecords");
+
+            let records = [];
+
+
+            /*
+             * Check common localStorage names used by
+             * the attendance system.
+             */
+
+            const possibleKeys = [
+                "attendanceRecords",
+                "attendance",
+                "attendanceData",
+                "records"
+            ];
+
+
+            possibleKeys.forEach(function(key) {
+
+                const savedData = localStorage.getItem(key);
+
+                if (!savedData) {
+                    return;
+                }
+
+                try {
+
+                    const data = JSON.parse(savedData);
+
+                    if (Array.isArray(data)) {
+
+                        records = records.concat(data);
+
+                    } else if (data && typeof data === "object") {
+
+                        records.push(data);
+
+                    }
+
+                } catch (error) {
+
+                    console.log(
+                        "Could not read localStorage key:",
+                        key
+                    );
+
+                }
+
+            });
+
+
+            /*
+             * Remove duplicate records.
+             */
+
+            records = records.filter(function(record, index, self) {
+
+                return index === self.findIndex(function(r) {
+
+                    return JSON.stringify(r) === JSON.stringify(record);
+
+                });
+
+            });
+
+
+            /*
+             * If there are no records.
+             */
+
+            if (records.length === 0) {
+
+                tableBox.style.display = "none";
+                noRecords.style.display = "block";
+
+                return;
+
+            }
+
+
+            /*
+             * Display every attendance record.
+             */
+
+            records.forEach(function(record) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                const employeeId =
+                    record.employeeId ||
+                    record.employee_id ||
+                    record.id ||
+                    "N/A";
+
+
+                const name =
+                    record.name ||
+                    record.employeeName ||
+                    record.doctorName ||
+                    record.nurseName ||
+                    "Staff";
+
+
+                const date =
+                    record.date ||
+                    record.attendanceDate ||
+                    record.attendance_date ||
+                    new Date().toLocaleDateString("en-IN");
+
+
+                const shift =
+                    record.shift ||
+                    "Not specified";
+
+
+                const status =
+                    record.status ||
+                    "Present";
+
+
+                row.innerHTML = `
+
+                    <td>${employeeId}</td>
+
+                    <td>${name}</td>
+
+                    <td>${date}</td>
+
+                    <td>${shift}</td>
+
+                    <td class="${status.toLowerCase() === 'present'
+                        ? 'present'
+                        : 'absent'}">
+
+                        ${status}
+
+                    </td>
+
+                `;
+
+
+                tableBody.appendChild(row);
+
+            });
+
+        }
+
+
+        /*
+         * LOGOUT
+         */
+
+        function logoutUser() {
+
+            localStorage.removeItem("employeeId");
+            localStorage.removeItem("employeeName");
+            localStorage.removeItem("userType");
+
+            window.location.href = "login.html";
+
+        }
+
+
+        /*
+         * LOAD HISTORY WHEN PAGE OPENS
+         */
+
+        loadAttendanceHistory();
+
+    </script>
+
+</body>
+
+</html>

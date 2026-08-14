@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediCare Hospital</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f6f0e4;
+            color: #2b2020;
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: #f6f0e4;
+            border-bottom: 1px solid #ddd2c2;
+        }
+
+        nav h2 {
+            color: #8b1234;
+            font-size: 27px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #332b2b;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #8b1234;
+        }
+
+        .login-btn {
+            background: #8b1234;
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 25px;
+        }
+
+        .hero {
+            min-height: 560px;
+            padding: 110px 8%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tagline {
+            color: #8b1234;
+            letter-spacing: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #625959;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .get-started {
+            display: inline-block;
+            text-decoration: none;
+            background: #8b1234;
+            color: white;
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .get-started:hover {
+            background: #6f0e2a;
+        }
+
+        .about {
+            background: white;
+            padding: 90px 8%;
+            display: flex;
+            justify-content: space-between;
+            gap: 80px;
+        }
+
+        .about-left {
+            width: 45%;
+        }
+
+        .about-right {
+            width: 45%;
+            color: #625959;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .small-title {
+            color: #8b1234;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            line-height: 1.15;
+        }
+
+        .services {
+            padding: 80px 8%;
+            text-align: center;
+            background: #f6f0e4;
+        }
+
+        .services h2 {
+            font-size: 38px;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .card h3 {
+            color: #8b1234;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #8b1234;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav ul {
+                gap: 10px;
+            }
+
+            nav ul li:nth-child(2),
+            nav ul li:nth-child(3) {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px 7%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .about {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .about-left,
+            .about-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <h2>MediCare</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <li>
+                <a href="login.html" class="login-btn">Login</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="tagline">
+                SMART • SIMPLE • CONNECTED
+            </div>
+
+            <h1>
+                Hospital Management
+                Made Simple
+            </h1>
+
+            <p>
+                A smarter way to manage hospital staff,
+                attendance, doctors and nurses — all in
+                one place.
+            </p>
+
+            <a href="login.html" class="get-started">
+                Get Started
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+
+    <section class="about" id="about">
+
+        <div class="about-left">
+
+            <div class="small-title">
+                ABOUT US
+            </div>
+
+            <h2>
+                Better Healthcare,
+                Better Management
+            </h2>
+
+        </div>
+
+        <div class="about-right">
+
+            <p>
+                MediCare is a hospital management platform
+                designed to make healthcare administration
+                easier and more organized.
+            </p>
+
+            <br>
+
+            <p>
+                From managing hospital staff attendance
+                to providing organized access to hospital
+                services, everything can be managed from
+                one platform.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section class="services" id="services">
+
+        <div class="small-title">
+            OUR SERVICES
+        </div>
+
+        <h2>Everything in One Place</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Staff Attendance</h3>
+                <p>
+                    Doctors and nurses can securely
+                    mark and view their attendance.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Staff Login</h3>
+                <p>
+                    Separate access for hospital
+                    doctors and nursing staff.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Attendance History</h3>
+                <p>
+                    Easily view previous attendance
+                    records and shift information.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="about" id="contact">
+
+        <div class="about-left">
+
+            <div class="small-title">
+                CONTACT
+            </div>
+
+            <h2>
+                We're Here to Help
+            </h2>
+
+        </div>
+
+        <div class="about-right">
+
+            <p>
+                MediCare Hospital Management System
+            </p>
+
+            <br>
+
+            <p>
+                For staff assistance and system-related
+                queries, please contact the hospital
+                administration.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © 2026 MediCare Hospital | Hospital Management System
+    </footer>
+
+
+</body>
+</html>

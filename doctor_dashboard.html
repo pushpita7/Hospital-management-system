@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doctor Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>🏥 MediCare Hospital</h2>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="attendance_history.html">History</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="dashboard">
+
+    <h1>Doctor Dashboard</h1>
+
+    <h2>Welcome, <span id="doctorName">Doctor</span> 👋</h2>
+
+    <p>
+        Employee ID:
+        <strong id="doctorId"></strong>
+    </p>
+
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h3>📝 Attendance</h3>
+            <p>Mark your attendance for today's shift.</p>
+            <a href="attendance.html">
+                <button>Mark Attendance</button>
+            </a>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>📅 Attendance History</h3>
+            <p>View your previous attendance records.</p>
+            <a href="attendance_history.html">
+                <button>View History</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+    document.getElementById("doctorName").textContent =
+        localStorage.getItem("employeeName") || "Doctor";
+
+    document.getElementById("doctorId").textContent =
+        localStorage.getItem("employeeId") || "D001";
+</script>
+
+</body>
+</html>

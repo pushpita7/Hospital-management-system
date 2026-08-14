@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hospital Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav>
+    <h2>🏥 MediCare Hospital</h2>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <h2>Login Portal</h2>
+
+        <form onsubmit="return validateLogin()">
+
+            <label>User Type</label>
+
+            <select id="userType">
+                <option value="">Select User</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Nurse">Nurse</option>
+            </select>
+
+
+            <label>Employee ID</label>
+
+            <input
+                type="text"
+                id="employeeId"
+                placeholder="Enter Employee ID"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password"
+                required
+            >
+
+
+            <button type="submit">Login</button>
+
+        </form>
+
+        <p style="margin-top: 15px;">
+            <strong>Demo Login:</strong><br>
+            Nurse: N001 / 1234<br>
+            Doctor: D001 / 1234
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

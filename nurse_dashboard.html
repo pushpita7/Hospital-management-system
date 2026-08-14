@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nurse Dashboard - MediCare Hospital</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #f6f0e4;
+            color: #2b2020;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            background: #f6f0e4;
+            border-bottom: 1px solid #ddd2c2;
+        }
+
+        nav h2 {
+            color: #8b1234;
+            font-size: 27px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #332b2b;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #8b1234;
+        }
+
+        .logout {
+            background: #8b1234;
+            color: white !important;
+            padding: 11px 22px;
+            border-radius: 25px;
+        }
+
+        .dashboard {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 30px;
+        }
+
+        .welcome {
+            margin-bottom: 40px;
+        }
+
+        .welcome small {
+            color: #8b1234;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .welcome h1 {
+            font-size: 45px;
+            margin: 15px 0 10px;
+        }
+
+        .welcome p {
+            color: #625959;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #8b1234;
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #625959;
+            line-height: 1.6;
+        }
+
+        .card button {
+            border: none;
+            background: #8b1234;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .card button:hover {
+            background: #6f0e2a;
+        }
+
+        .info {
+            margin-top: 35px;
+            background: #8b1234;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .info h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <h2>MediCare</h2>
+
+        <ul>
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="attendance.html">Attendance</a>
+            </li>
+
+            <li>
+                <a href="attendance_history.html">History</a>
+            </li>
+
+            <li>
+                <a href="#" class="logout" onclick="logout()">Logout</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+        <div class="welcome">
+
+            <small>NURSE PORTAL</small>
+
+            <h1>
+                Nurse Dashboard
+            </h1>
+
+            <p>
+                Welcome, <strong id="nurseName">Nurse</strong> 👋
+            </p>
+
+            <p>
+                Employee ID:
+                <strong id="nurseId">N001</strong>
+            </p>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h2>📝 Attendance</h2>
+
+                <p>
+                    Mark your attendance and select
+                    your current hospital shift.
+                </p>
+
+                <a href="attendance.html">
+                    <button>
+                        Mark Attendance
+                    </button>
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>📅 History</h2>
+
+                <p>
+                    View your previous attendance
+                    records and shift information.
+                </p>
+
+                <a href="attendance_history.html">
+                    <button>
+                        View History
+                    </button>
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🏥 Hospital Portal</h2>
+
+                <p>
+                    Access the MediCare hospital
+                    management system from one place.
+                </p>
+
+                <a href="index.html">
+                    <button>
+                        Go to Home
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="info">
+
+            <h3>Staff Attendance System</h3>
+
+            <p>
+                Use this dashboard to mark your daily
+                attendance and keep track of your
+                attendance history.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <script>
+
+        document.getElementById("nurseName").textContent =
+            localStorage.getItem("employeeName") || "Nurse";
+
+        document.getElementById("nurseId").textContent =
+            localStorage.getItem("employeeId") || "N001";
+
+    </script>
+
+</body>
+
+</html>

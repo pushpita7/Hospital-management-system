@@ -1,0 +1,338 @@
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+/* BODY */
+
+body{
+    background:#F5F5DC;
+    color:#333;
+}
+
+/* NAVIGATION BAR */
+
+nav{
+    background:#800000;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 60px;
+}
+
+nav h2{
+    font-size:30px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#FFD700;
+}
+
+/* HERO SECTION */
+
+.hero{
+    height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(rgba(128,0,0,0.65),rgba(128,0,0,0.65)),
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef");
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    margin-bottom:35px;
+}
+
+/* BUTTON */
+
+.btn{
+    background:#F5F5DC;
+    color:#800000;
+    text-decoration:none;
+    padding:15px 35px;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#FFD700;
+}
+
+/* FEATURES */
+
+.features{
+    padding:80px 10%;
+    background:#F5F5DC;
+    text-align:center;
+}
+
+.features h2{
+    font-size:38px;
+    color:#800000;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:flex;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#800000;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.6;
+}
+
+/* LOGIN PAGE */
+
+.login-container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#F5F5DC;
+}
+
+.login-box{
+    width:420px;
+    background:white;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.login-box h2{
+    text-align:center;
+    color:#800000;
+    margin-bottom:30px;
+}
+
+.login-box label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.login-box input,
+.login-box select{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.login-box button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    background:#800000;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-box button:hover{
+    background:#5c0000;
+}
+
+/* FOOTER */
+
+footer{
+    background:#800000;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+/* DASHBOARD */
+
+.dashboard{
+    padding:60px 8%;
+    background:#F5F5DC;
+    min-height:100vh;
+}
+
+.dashboard h1{
+    text-align:center;
+    color:#800000;
+    margin-bottom:40px;
+    font-size:42px;
+}
+
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.dashboard-card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    transition:0.3s;
+    text-align:center;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-8px);
+}
+
+.dashboard-card h3{
+    color:#800000;
+    margin-bottom:15px;
+}
+
+.dashboard-card p{
+    color:#555;
+    line-height:1.6;
+}
+/* ATTENDANCE PAGE */
+
+.attendance-container{
+    min-height:100vh;
+    background:#F5F5DC;
+    padding:50px;
+}
+
+.attendance-container h1{
+    text-align:center;
+    color:#800000;
+    margin-bottom:30px;
+}
+
+.attendance-box{
+    width:500px;
+    margin:auto;
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.attendance-box label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.attendance-box input,
+.attendance-box select{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.attendance-box button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    background:#800000;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.attendance-box button:hover{
+    background:#5e0000;
+}
+/* Attendance History */
+
+.history-container{
+    min-height:100vh;
+    background:#F5F5DC;
+    padding:50px;
+}
+
+.history-container h1{
+    text-align:center;
+    color:#800000;
+    margin-bottom:30px;
+}
+
+table{
+    width:90%;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+table th{
+    background:#800000;
+    color:white;
+    padding:15px;
+}
+
+table td{
+    text-align:center;
+    padding:15px;
+    border:1px solid #ddd;
+}
+
+table tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+table tr:hover{
+    background:#F5F5DC;
+}
